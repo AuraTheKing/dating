@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SparkMate | Login</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <%- include('partials', { currentUser: null }) %>
+  <main class="auth-page">
+    <section class="auth-card">
+      <h1>Welcome back</h1>
+      <p class="subtitle">Pick up the conversation with your new matches.</p>
+      <% if (error) { %>
+        <div class="alert"><%= error %></div>
+      <% } %>
+      <form method="POST" action="/login" class="form-grid">
+        <label>
+          Email
+          <input type="email" name="email" value="<%= form.email || '' %>" required />
+        </label>
+        <label>
+          Password
+          <input type="password" name="password" required />
+        </label>
+        <button type="submit" class="primary">Log in</button>
+      </form>
+      <p class="helper">New here? <a href="/register">Create an account</a></p>
+    </section>
+  </main>
+</body>
+</html>

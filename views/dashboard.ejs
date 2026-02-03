@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SparkMate | Dashboard</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <%- include('partials', { currentUser }) %>
+  <main class="dashboard">
+    <section class="hero">
+      <div>
+        <h1>Hi <%= currentUser.name %> 👋</h1>
+        <p class="subtitle">Your profile is live. Start chatting with new people today.</p>
+      </div>
+      <div class="profile-card">
+        <h2>Your profile</h2>
+        <p class="profile-label">Email</p>
+        <p><%= currentUser.email %></p>
+        <p class="profile-label">Bio</p>
+        <p><%= currentUser.bio %></p>
+        <a class="ghost" href="/profile">Update profile</a>
+      </div>
+    </section>
+
+    <section class="matches">
+      <div class="section-header">
+        <h2>Suggested matches</h2>
+        <span class="pill"><%= matches.length %> nearby</span>
+      </div>
+      <div class="match-grid">
+        <% if (matches.length === 0) { %>
+          <div class="empty-state">
+            <h3>No matches yet</h3>
+            <p>Invite friends or check back once more people join SparkMate.</p>
+          </div>
+        <% } %>
+        <% matches.forEach((match) => { %>
+          <article class="match-card">
+            <div class="avatar"><%= match.name.charAt(0).toUpperCase() %></div>
+            <div>
+              <h3><%= match.name %></h3>
+              <p><%= match.bio %></p>
+              <button type="button" class="primary">Send Spark</button>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
