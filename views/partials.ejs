@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="brand">SparkMate</div>
+  <nav>
+    <% if (currentUser) { %>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/profile">Edit Profile</a>
+      <a href="/logout">Log out</a>
+    <% } else { %>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    <% } %>
+  </nav>
+</header>
