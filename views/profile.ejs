@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SparkMate | Edit Profile</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <%- include('partials', { currentUser: true }) %>
+  <main class="auth-page">
+    <section class="auth-card">
+      <h1>Edit your profile</h1>
+      <p class="subtitle">Refresh your bio to keep things lively.</p>
+      <% if (error) { %>
+        <div class="alert"><%= error %></div>
+      <% } %>
+      <form method="POST" action="/profile" class="form-grid">
+        <label>
+          Full name
+          <input type="text" name="name" value="<%= form.name || '' %>" required />
+        </label>
+        <label>
+          About you
+          <textarea name="bio" rows="4" required><%= form.bio || '' %></textarea>
+        </label>
+        <button type="submit" class="primary">Save changes</button>
+      </form>
+      <p class="helper">Back to <a href="/dashboard">dashboard</a></p>
+    </section>
+  </main>
+</body>
+</html>
